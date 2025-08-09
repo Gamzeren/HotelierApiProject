@@ -1,0 +1,44 @@
+﻿@model List<ResultGuestDto>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+	int count = 0;
+}
+
+<div class="card-body">
+	<h4 class="card-title">Misafirler Tablosu</h4>
+	<div class="table-responsive">
+		<table class="table table-bordered verticle-middle">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Ad</th>
+					<th scope="col">Soyad</th>
+					<th scope="col">Şehir</th>
+					<th scope="col">İşlemler</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					count++;
+					<tr>
+						<td>@count</td>
+						<td>@item.Name</td>
+						<td>@item.Surname</td>
+						<td>@item.City</td>
+						<td>
+							<span>
+								<a href="/Guest/UpdateGuest/@item.GuestID" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+								<a href="/Guest/DeleteGuest/@item.GuestID" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a>
+							</span>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<a href="/Guest/AddGuest/" class="label gradient-2 btn-rounded"> Yeni Misafir Ekle</a>
+	</div>
+</div>
+

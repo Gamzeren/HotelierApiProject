@@ -1,0 +1,45 @@
+﻿@model List<StaffViewModel>
+
+@{
+	ViewData["Title"] = "Index";
+	Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="card-body">
+	<h4 class="card-title">Personel Tablosu</h4>
+	<div class="table-responsive">
+		<table class="table table-bordered verticle-middle">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Personel Adı</th>
+					<th scope="col">Personel Ünvan</th>
+					<th scope="col">Detaylar</th>
+					<th scope="col">İşlemler</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.StaffID</td>
+						<td>
+							@item.Name
+						</td>
+						<td>@item.Title</td>
+						<td>
+							<span> <a href="#" class="label gradient-1 btn-rounded">Detaylar</a></span>
+						</td>
+						<td>
+							<span>
+								<a href="/Staff/UpdateStaff/@item.StaffID" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+								<a href="/Staff/DeleteStaff/@item.StaffID" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a>
+							</span>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<a href="/Staff/AddStaff/" class="label gradient-2 btn-rounded"> Yeni Personel Ekle</a>
+	</div>
+</div>

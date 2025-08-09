@@ -1,0 +1,42 @@
+﻿@model List<ResultWorkLocationDto>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/AdminLayout/_AdminLayout.cshtml";
+}
+
+<div class="card-body">
+	<h4 class="card-title">Otel Lokasyon Tablosu</h4>
+	<div class="table-responsive">
+		<table class="table table-bordered verticle-middle">
+			<thead>
+				<tr>
+					<th scope="col">#</th>
+					<th scope="col">Lokasyon Adı</th>
+					<th scope="col">Şehir</th>
+					<th scope="col">İşlemler</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model)
+				{
+					<tr>
+						<td>@item.WorkLocationID</td>
+						<td>
+							@item.WorkLocationName
+						</td>
+						<td>@item.WorkLocationCity</td>
+						<td>
+							<span>
+								<a href="/WorkLocation/UpdateWorkLocation/@item.WorkLocationID" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-pencil color-muted m-r-5"></i> </a>
+								<a href="/WorkLocation/DeleteWorkLocation/@item.WorkLocationID" data-toggle="tooltip" data-placement="top" title="Close"><i class="fa fa-close color-danger"></i></a>
+							</span>
+						</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+		<a href="/WorkLocation/AddWorkLocation/" class="label gradient-2 btn-rounded"> Yeni Lokasyon Ekle</a>
+	</div>
+</div>
+
